@@ -32,12 +32,6 @@ from py3d.extras.movement_rig import MovementRig
 
 
 class Example(Base):
-    """
-    Render a scene using two cameras onto two render targets.
-    The first camera renders to the window.
-    The second camera renders to a "television screen" (rectangle) making a texture.
-    Move the first camera: WASDRF(move), QE(turn), TG(look).
-    """
 
     def __init__(self, screen_size=(512, 512)):
         super().__init__(screen_size)
@@ -55,7 +49,6 @@ class Example(Base):
         sky_material = TextureMaterial(texture=Texture(file_name="images/dark_sky.jpg"))
         sky = Mesh(sky_geometry, sky_material)
         self.scene.add(sky)
-
 
         # The Sun's lighting effect
         point_light1 = PointLight(color=[0.9, 0.9, 0], position=[1.5, 0, 1.5], attenuation=[0.1,0,0.1])
@@ -117,13 +110,6 @@ class Example(Base):
         self.rig.update(self.input, self.delta_time)
         self.renderer.render(self.scene, self.sky_camera)
         self.renderer.render(self.scene, self.camera)
-
-
-
-
-
-
-
 
 # Instantiate this class and run the program
 Example(screen_size=[800, 600]).run()

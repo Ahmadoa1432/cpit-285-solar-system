@@ -52,7 +52,7 @@ class Example(Base):
         self.scene.add(self.rig)
         self.rig.set_position([0, 1, 4])
         sky_geometry = SphereGeometry(radius=50)
-        sky_material = TextureMaterial(texture=Texture(file_name="../images/dark_sky.jpg"))
+        sky_material = TextureMaterial(texture=Texture(file_name="images/dark_sky.jpg"))
         sky = Mesh(sky_geometry, sky_material)
         self.scene.add(sky)
 
@@ -73,19 +73,19 @@ class Example(Base):
 
         # textures materials
         textured_flat_earth = FlatMaterial(
-            texture=Texture("../images/earth.jpg"),
+            texture=Texture("images/earth.jpg"),
             number_of_light_sources=6
         )
         textured_lambert_earth = LambertMaterial(
-            texture=Texture("../images/earth.jpg"),
+            texture=Texture("images/earth.jpg"),
             number_of_light_sources=6
         )
         textured_phong_earth = PhongMaterial(
-            texture=Texture("../images/earth.jpg"),
+            texture=Texture("images/earth.jpg"),
             number_of_light_sources=6
         )
         textured_phong_sun = PhongMaterial(
-            texture=Texture("../images/sun.jpg"),
+            texture=Texture("images/sun.jpg"),
             number_of_light_sources=6
 
         )

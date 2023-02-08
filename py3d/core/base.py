@@ -19,7 +19,7 @@ class Base:
         # Create and display the window
         self._screen = pygame.display.set_mode(screen_size, display_flags)
         # Set the text that appears in the title bar of the window
-        pygame.display.set_caption("Graphics Window Ahmad Othman Alghamdi 2036683")
+        pygame.display.set_caption("Graphics Window Solar System")
         # Determine if main loop is active
         self._running = True
         # Manage time-related data and operations
@@ -31,7 +31,6 @@ class Base:
         # Print the system information
         Utils.print_system_info()
         # Welcoming message
-        self._welcome = "Name: Ahmad Othman Alghamdi\nID: 2036683\nInitializing program..."
 
     @property
     def delta_time(self):

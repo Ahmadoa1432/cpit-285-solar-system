@@ -37,7 +37,7 @@ class Example(Base):
         super().__init__(screen_size)
 
     def initialize(self):
-        print("Name:Ahmad Othman Alghamdi\nID: 2036683\nInitializing program...")
+        print("Initializing program...")
         self.renderer = Renderer()
         self.scene = Scene()
         self.camera = Camera(aspect_ratio=800/600)
@@ -101,10 +101,10 @@ class Example(Base):
         self.scene.add(self.sky_camera)
 
     def update(self):
-        self.sun.rotate_y(0.00133) # Sun rotation around itself
+        self.sun.rotate_y(0.00233) # Sun rotation around itself
 
         # Earth rotation around itself and around the sun
-        self.earth.translate(-0.04, 0, -0.08)
+        self.earth.translate(-0.01, 0, -0.08)
         self.earth.rotate_y(0.01337)
 
         self.rig.update(self.input, self.delta_time)

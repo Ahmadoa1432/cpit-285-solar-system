@@ -42,8 +42,8 @@ class MovementRig(Object3D):
         self._look_attachment.remove(child)
 
     def update(self, input_object, delta_time):
-        move_amount = self._units_per_second * delta_time
-        rotate_amount = self._degrees_per_second * (math.pi / 180) * delta_time
+        move_amount = self._units_per_second * delta_time * 4
+        rotate_amount = self._degrees_per_second * (math.pi / 180) * delta_time * 1.4
         if input_object.is_key_pressed(self.KEY_MOVE_FORWARDS):
             self.translate(0, 0, -move_amount)
         if input_object.is_key_pressed(self.KEY_MOVE_BACKWARDS):

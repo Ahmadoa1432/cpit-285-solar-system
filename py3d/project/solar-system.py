@@ -83,22 +83,18 @@ class Example(Base):
 
         )
 
-        #Sun
+        #Sun Object
         sun = SphereGeometry()
         self.sun = Mesh(sun, textured_phong_sun)
         self.sun.set_position([0, 0, 0])
         self.scene.add(self.sun)
 
-        #Earth
+        #Earth Object
         Earth = SphereGeometry()
         self.earth = Mesh(Earth, textured_flat_earth)
-        self.earth.set_position([4, 0, 0])
+        self.earth.set_position([8, 0, 0])
         self.scene.add(self.earth)
 
-        self.sky_camera = Camera(aspect_ratio=512/512)
-        self.sky_camera.set_position([0, 10, 0])
-        self.sky_camera.look_at([0, 0, 0])
-        self.scene.add(self.sky_camera)
 
     def update(self):
         self.sun.rotate_y(0.00233) # Sun rotation around itself
@@ -108,7 +104,6 @@ class Example(Base):
         self.earth.rotate_y(0.01337)
 
         self.rig.update(self.input, self.delta_time)
-        self.renderer.render(self.scene, self.sky_camera)
         self.renderer.render(self.scene, self.camera)
 
 # Instantiate this class and run the program

@@ -3,6 +3,10 @@ import math
 import pathlib
 import sys
 
+from py3d.effects.additive_blend import AdditiveBlendEffect
+from py3d.effects.horizontal_blur import HorizontalBlurEffect
+from py3d.effects.vertical_blur import VerticalBlurEffect
+from py3d.extras.postprocessor import Postprocessor
 from py3d.light.ambient import AmbientLight
 from py3d.light.directional import DirectionalLight
 from py3d.light.point import PointLight
@@ -95,6 +99,33 @@ class Example(Base):
         self.earth.set_position([8, 0, 0])
         self.scene.add(self.earth)
 
+        # # Uncomment for glow effect
+        #
+        # self.postprocessor = Postprocessor(self.renderer, self.scene, self.camera)
+        #
+        # # glow scene.
+        # self.glow_scene = Scene()
+        # yellow_material = SurfaceMaterial(property_dict={"baseColor": [1, 1, 0]})
+        # glow_sphere = Mesh(sun, yellow_material)
+        # glow_sphere.local_matrix = self.sun.local_matrix
+        # self.glow_scene.add(glow_sphere)
+        #
+        # # glow postprocessing
+        # glow_target = RenderTarget(resolution=[800, 600])
+        # self.glow_pass = Postprocessor(self.renderer, self.glow_scene, self.camera, glow_target)
+        # self.glow_pass.add_effect(HorizontalBlurEffect(texture_size=[800, 600], blur_radius=50))
+        # self.glow_pass.add_effect(VerticalBlurEffect(texture_size=[800, 600], blur_radius=50))
+        #
+        # # combining results of glow effect with main scene
+        # self.combo_pass = Postprocessor(self.renderer, self.scene, self.camera)
+        # self.combo_pass.add_effect(
+        #     AdditiveBlendEffect(
+        #         blend_texture=glow_target.texture,
+        #         original_strength=1,
+        #         blend_strength=3
+        #     )
+        # )
+
 
     def update(self):
         self.sun.rotate_y(0.00233) # Sun rotation around itself
@@ -105,6 +136,10 @@ class Example(Base):
 
         self.rig.update(self.input, self.delta_time)
         self.renderer.render(self.scene, self.camera)
+
+        ## Uncomment for glow effect
+        # self.glow_pass.render()
+        # self.combo_pass.render()
 
 # Instantiate this class and run the program
 Example(screen_size=[800, 600]).run()

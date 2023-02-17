@@ -42,7 +42,7 @@ class Example(Base):
         print("Initializing program...")
         self.renderer = Renderer()
         self.scene = Scene()
-        self.camera = Camera(aspect_ratio=800/600,)
+        self.camera = Camera(aspect_ratio=800/600)
         self.rig = MovementRig()
         self.rig.add(self.camera)
         self.scene.add(self.rig)

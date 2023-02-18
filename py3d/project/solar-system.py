@@ -46,14 +46,14 @@ class Example(Base):
         self.rig = MovementRig()
         self.rig.add(self.camera)
         self.scene.add(self.rig)
-        self.SUN_SIZE = 3
+        self.SUN_SIZE = 4
         self.rig.set_position([0, 1, 4*self.SUN_SIZE])
         sky_geometry = SphereGeometry(radius=70)
         sky_material = TextureMaterial(texture=Texture(file_name="images/dark_sky.jpg"))
         sky = Mesh(sky_geometry, sky_material)
         self.scene.add(sky)
 
-
+        # Sun Size and Light ratio to size
         SUN_SIZE = self.SUN_SIZE
         SUN_LIGHT = 0.05 /SUN_SIZE
 
